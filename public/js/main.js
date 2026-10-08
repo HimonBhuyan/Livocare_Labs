@@ -196,4 +196,43 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleTheme();
         });
     });
+
+    // 8. Fullscreen Toggle
+    const fullscreenTriggers = document.querySelectorAll('.fullscreen-toggle-trigger');
+    
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            const docEl = document.documentElement;
+            if (docEl.requestFullscreen) {
+                docEl.requestFullscreen().catch(() => {});
+            } else if (docEl.webkitRequestFullscreen) {
+                docEl.webkitRequestFullscreen();
+            } else if (docEl.msRequestFullscreen) {
+                docEl.msRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen().catch(() => {});
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+    }
+
+    fullscreenTriggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleFullscreen();
+        });
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+        if (document.fullscreenElement) {
+            document.documentElement.classList.add('is-fullscreen');
+        } else {
+            document.documentElement.classList.remove('is-fullscreen');
+        }
+    });
 });

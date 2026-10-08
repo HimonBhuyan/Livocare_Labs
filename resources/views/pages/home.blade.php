@@ -6,7 +6,15 @@
 @section('content')
 
 <!-- Hero Section -->
-<section class="hero-section">
+<section class="hero-section hero-has-video">
+    <!-- Glowing DNA Helix Laboratory Background Video -->
+    <div class="hero-video-wrapper" aria-hidden="true">
+        <video class="hero-bg-video" autoplay muted loop playsinline preload="auto">
+            <source src="{{ asset('videos/Glowing_DNA_helix_in_laboratory_20261008111036.mp4') }}" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+    </div>
+
     <div class="container hero-grid">
         <!-- Hero Text -->
         <div>
